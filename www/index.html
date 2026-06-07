@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Include App.js CSS directly from CDN for guaranteed loading -->
+    <link rel="stylesheet" href="https://cdn.kik.com/app/2.0.1/app.min.css">
+    <style>
+        .profile-img { width: 120px; height: 120px; border-radius: 50%; display: block; margin: 15px auto; object-fit: cover; border: 3px solid #2196F3; }
+        .center-btn { display: block; margin: 10px auto; width: 60%; text-align: center; }
+        .nav-box { margin-top: 25px; }
+    </style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- SCREEN 1: HOME PAGE                        -->
+<!-- ========================================== -->
+<div class="app-page" data-page="home">
+    <div class="app-topbar blue">
+        <div class="app-title">Maxwell's CV Portfolio</div>
+    </div>
+    <div class="app-content">
+        <img id="avatar" src="https://placehold.co" class="profile-img">
+        <button class="app-button center-btn" id="change-pic">Take Profile Photo</button>
+
+        <div class="app-section nav-box">
+            <!-- data-target matches the data-page attribute of the destination screen -->
+            <div class="app-button" data-target="experience" style="margin-bottom:10px;">Go to Experience</div>
+            <div class="app-button" data-target="skills" style="margin-bottom:10px;">Go to Technical Skills</div>
+            <div class="app-button" data-target="location">Go to Location GPS</div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- SCREEN 2: EXPERIENCE PAGE                  -->
+<!-- ========================================== -->
+<div class="app-page" data-page="experience">
+    <div class="app-topbar blue">
+        <!-- data-back tells App.js to instantly return to the previous page -->
+        <div class="app-button left" data-back>Back</div>
+        <div class="app-title">Work Experience</div>
+    </div>
+    <div class="app-content">
+        <div class="app-section">
+            <h3>Lead Mobile Engineer</h3>
+            <p><b>Company:</b> Tech Global Ltd</p>
+            <p><b>Duration:</b> 2024 - Present</p>
+            <hr>
+            <p>Building high-end hybrid cross-platform applications using Cordova and framework environments.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- SCREEN 3: SKILLS PAGE                      -->
+<!-- ========================================== -->
+<div class="app-page" data-page="skills">
+    <div class="app-topbar blue">
+        <div class="app-button left" data-back>Back</div>
+        <div class="app-title">My Skills</div>
+    </div>
+    <div class="app-content">
+        <ul class="app-list">
+            <li>Apache Cordova Hybrid System</li>
+            <li>App.js Application Framework</li>
+            <li>Native Hardware API Integrations</li>
+            <li>JavaScript / HTML5 / CSS3</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- SCREEN 4: LOCATION PAGE                    -->
+<!-- ========================================== -->
+<div class="app-page" data-page="location">
+    <div class="app-topbar blue">
+        <div class="app-button left" data-back>Back</div>
+        <div class="app-title">Device Location</div>
+    </div>
+    <div class="app-content">
+        <div class="app-section" style="text-align: center;">
+            <p>Click below to tap into native hardware GPS sensors.</p>
+            <button class="app-button blue" id="get-loc">Fetch Native GPS</button>
+            <p id="loc-display" style="margin-top:20px; font-weight:bold;"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts Required -->
+<script src="cordova.js"></script>
+<!-- Include App.js library files via CDN for testing -->
+<script src="https://cdn.kik.com/app/2.0.1/app.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
