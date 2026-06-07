@@ -1,9 +1,14 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 // Fallback for browser testing if Cordova is not ready
-if (!window.cordova) {
-    setTimeout(onDeviceReady, 500);
-}
+// This is actually redundant if we serve cordova.js and it's working,
+// but good for environments where cordova.js might fail to load.
+setTimeout(function() {
+    if (!isAppReady) {
+        console.log("Device ready timed out, forcing onDeviceReady");
+        onDeviceReady();
+    }
+}, 3000);
 
 let isAppReady = false;
 
@@ -46,19 +51,19 @@ function onDeviceReady() {
     App.populator('location', function (page) {
         $(page).find('#get-loc').on('click', function () {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
                     document.getElementById('loc-display').innerHTML =
                         'Lat: ' + position.coords.latitude.toFixed(4) + '<br>' +
-                            'Long: ' + position.coords.longitude.toFixed(4);
-                            }, function(err) {
-                                alert('GPS failed: ' + err.message);
-                            });
-                            } else {
-                                alert('Geolocation native plugin not found.');
-                            }
-                            });
-                            });
+                        'Long: ' + position.coords.longitude.toFixed(4);
+                }, function (err) {
+                    alert('GPS failed: ' + err.message);
+                });
+            } else {
+                alert('Geolocation native plugin not found.');
+            }
+        });
+    });
 
-                            // Critical step: Initialize and force transition to home
-                            App.load('home');
-                            }
+    // Critical step: Initialize and force transition to home
+    App.load('home');
+}
