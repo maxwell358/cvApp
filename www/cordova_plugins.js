@@ -34,8 +34,8 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-geolocation": "5.0.0",
-    "cordova-plugin-camera": "8.0.0"
+    "cordova-plugin-camera": "8.0.0",
+    "cordova-plugin-geolocation": "5.0.0"
 }
 // BOTTOM OF METADATA
 });
